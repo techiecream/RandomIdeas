@@ -30,7 +30,7 @@ if (isset($_POST["bsmsg"]) && $_POST["bsmsg"] == "obsmsg") {
                 echo '<form><table>';
                 // Print summary
                 $valid = $result['originalRowCount'] - $result['duplicatesCount'] - 1;
-                $rate = $result['originalRowCount'] * 30;
+                $rate = $result['originalRowCount'] * 40;
                 echo "Total rows in CSV: " . $result['originalRowCount'] . "<br/>";
                 echo "Total duplicates removed: " . $result['duplicatesCount'] . "<br/>";
                 echo "Total Valid Records: " . $valid . "<br/>";
