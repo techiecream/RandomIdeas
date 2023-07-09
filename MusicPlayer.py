@@ -3,7 +3,6 @@ import librosa
 import pygame.mixer
 import datetime
 import random
-import time
 
 # Directory containing the MP3 files
 directory = os.getcwd()
@@ -43,6 +42,8 @@ total_time = 0
 for filename in os.listdir(directory):
     if filename.endswith('.mp3'):
         file_path = os.path.join(directory, filename)
+        # Print the song being analyzed
+        print("Analyzing song: {}".format(filename))
 
         # Load the audio file and get the tempo
         audio, _ = librosa.load(file_path)
@@ -66,17 +67,12 @@ for song_path in optimal_songs:
 # Display the total time in minutes
 print("Total Time: {:.2f} minutes".format(total_time / 60))
 
-# Play the shuffled optimal songs with crossfade
-for i, song_path in enumerate(optimal_songs):
+# Play the shuffled optimal songs
+for song_path in optimal_songs:
     # Load the MP3 file into Pygame mixer and play it
     pygame.mixer.music.load(song_path)
-    pygame.mixer.music.play(fade_ms=0)  # Start playing without fade-in
-    
-    if i > 0:
-        # Crossfade with the previous song
-        pygame.mixer.music.fadeout(15000)  # Fade out the previous song over 15 seconds
-        time.sleep(15)  # Wait for the crossfade duration
-        
+    pygame.mixer.music.play()
+
     # Wait for the song to finish playing
     while pygame.mixer.music.get_busy():
         pass
