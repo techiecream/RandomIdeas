@@ -37,7 +37,7 @@ optimal_songs = []
 
 # Total time in seconds
 total_time = 0
-
+print("Started at: {}".format(current_time))
 # Iterate through all the files in the directory to get the BPM
 for filename in os.listdir(directory):
     if filename.endswith('.mp3'):
@@ -66,7 +66,7 @@ for song_path in optimal_songs:
 
 # Display the total time in minutes
 print("Total Time: {:.2f} minutes".format(total_time / 60))
-
+print("Stopped at: {}".format(current_time))
 # Play the shuffled optimal songs
 for song_path in optimal_songs:
     # Load the MP3 file into Pygame mixer and play it
